@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+
+<robot name="robot">
+
+  <!-- Colors -->
+  <material name="Grey">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+  <material name="Red">
+    <color rgba="1 0 0 1.0"/>      
+  </material>
+  <material name="Yellow">
+    <color rgba="1 1 0 1.0"/>      
+  </material>
+
+  
+  <!--Manipulator-->
+  <!-- Link 0 -->
+  <link name="Link_0">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <!-- Joint 1 -->
+  <joint name="Joint_1" type="revolute">
+    <parent link="Link_0"/>
+    <child link="Link_1"/>
+    <origin rpy="0 0 0" xyz="0 0 0.6731"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="204" lower="-12.96705972839" upper="12.96705972839" velocity="100.91986217719"/>
+  </joint>
+    <!-- Link 1 -->
+  <link name="Link_1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0.302"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0.3366"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.6731"/>
+      </geometry>
+      <material name="Yellow"/>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 -0.6431"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.06"/>
+      </geometry>
+      <material name="Grey"/>
+    </visual>
+  </link>
+  <!-- Joint 2 -->
+  <joint name="Joint_2" type="revolute">
+    <parent link="Link_1"/>
+    <child link="Link_2"/>
+    <origin rpy="-1.5708 0 0" xyz="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="204" lower="-2.96705972839" upper="2.96705972839" velocity="1.91986217719"/>
+  </joint>
+    <!-- Link 2 -->
+  <link name="Link_2">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.216 0 0"/>
+      <mass value="15.46"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 1.5708 0" xyz="0.216 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.432"/>
+      </geometry>
+      <material name="Yellow"/>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.06"/>
+      </geometry>
+      <material name="Grey"/>
+    </visual>
+  </link>
+  <!-- Joint 3 -->
+  <joint name="Joint_3" type="revolute">
+    <parent link="Link_2"/>
+    <child link="Link_3"/>
+    <origin rpy="0 0 0" xyz="0.432 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="204" lower="-2.96705972839" upper="2.96705972839" velocity="1.91986217719"/>
+  </joint>
+    <!-- Link 3 -->
+  <link name="Link_3">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 -0.434 0"/>
+      <mass value="9.55"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="1.5708 0 0" xyz="0 -0.217 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.434"/>
+      </geometry>
+      <material name="Yellow"/>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.06"/>
+      </geometry>
+      <material name="Grey"/>
+    </visual>
+  </link>
+  <!-- Joint End-Effector -->
+  <joint name="Joint_EE" type="fixed">
+    <parent link="Link_3"/>
+    <child link="Link_EE"/>
+    <origin rpy="1.5708 0 0" xyz="0 -0.434 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+    <!-- End-Effector -->
+  <link name="Link_EE">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+      <material name="Red"/>
+    </visual>
+  </link>
+  
+</robot>
+
