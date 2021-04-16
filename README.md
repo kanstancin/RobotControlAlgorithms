@@ -1,5 +1,5 @@
 # RobotControlAlgorithms
-Various robot control algorithms for 3Dof manipulator: from Gravity Compensation to Force Control
+Various robot control algorithms for 3DoF manipulator: from Gravity Compensation to Force Control
 
 
 
