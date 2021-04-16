@@ -2,6 +2,8 @@
 various robot control algorithms for controlling 3Dof manipulator
 
 
+
+
 Conventional control approach - Passivity Based Robust Control, tracks desired trajectory in the presence of parametric uncertainty 
 
 
@@ -13,7 +15,9 @@ Conventional control approach - Passivity Based Robust Control, tracks desired t
 
 
 
+
 Reinforcement Learning control example:
+
 
 
 ![Reinforcement Learning control](reinforcement_learning_control.gif) 
