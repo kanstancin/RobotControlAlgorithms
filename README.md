@@ -1,5 +1,5 @@
 # RobotControlAlgorithms
-Various robot control algorithms for 3DoF manipulator: from Gravity Compensation to Force Control. Dynamical propertirs of the simulated robot are identical to PUMA 560 surgical manipulator
+Various robot control algorithms for 3DoF manipulator: from Gravity Compensation to Force Control. Dynamical properties of the simulated robot are identical to PUMA 560 surgical manipulator
 
 
 
