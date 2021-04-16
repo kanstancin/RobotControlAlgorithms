@@ -8,6 +8,13 @@ Reinforcement Learning control example:
 
 
 
+
+
+
+
 Conventional control approach - Passivity Based Robust Control, tracks desired trajectory in the presence of parametric uncertainty 
+
+
+
 
  ![Passivity Based Robust Control](robust_passive.gif) 
