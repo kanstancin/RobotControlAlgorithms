@@ -33,16 +33,16 @@ Reinforcement Learning control example:
 
 
 The following control algorithms are implemented in this project:
-- regulation problem:
-- PD control
-- PD control with gravity compensation
-- Tracking problem:
-- inverse dynamics control
-- Robust control
-- Adaptive Inverse Dynamics control
-- Lyapunov (Passivity) based tracking control
-- Lyapunov based Robust control
-- Lyapunov based Adaptive control
+Regulation problem:
+[x] PD control
+[x] PD control with gravity compensation
+Tracking problem:
+[x] inverse dynamics control
+[x] Robust control
+[x] Adaptive Inverse Dynamics control
+[x] Lyapunov (Passivity) based tracking control
+[x] Lyapunov based Robust control
+[x] Lyapunov based Adaptive control
 
 
 
