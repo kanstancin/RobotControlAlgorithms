@@ -114,9 +114,10 @@ legend('Task Space Trajectory','Waypoints');
 grid on
 view([45 45]);
 
-vizStep = 100;
+vizStep = 1;
 robot.DataFormat = 'column';
 qTask = out.configReal.Data';
+
 trajReal = FwdKin(qTask);
 plotSimulationResults(robot, vizStep, qTask,posTask,trajReal,waypoints);
 %plotSimulationResults(robot, vizStep, qTask,posTask,waypoints);
@@ -156,6 +157,7 @@ function [] = plotSimulationResults(robot, vizStep, qTask,posTask,trajReal,waypo
     
     % Iterate through all joint configurations 
     for i = 1:vizStep:size(qTask,2)
+        
         disp(strcat('Simulation step:  ',num2str(i),'/',num2str(size(qTask,2)))) 
         % Change robot configuration for projection on camera
         show(robot, qTask(:,i),'Frames','on','PreservePlot',false,'visuals','on');
