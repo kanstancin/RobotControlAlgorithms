@@ -47,7 +47,7 @@ Tracking problem:
 - [x] Lyapunov based Adaptive control
 
 Interaction problem:
-- [x] impedance control•
+- [x] impedance control
 - [x] parallel control
 - [x] hybrid motion force control
 - [x] hybrid impedance velocity control
