@@ -1,0 +1,3 @@
+-L/Applications/MATLAB_R2020b.app/bin/maci64
+-lmwblas
+-lmwlapack

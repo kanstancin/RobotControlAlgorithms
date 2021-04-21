@@ -1,13 +1,18 @@
 qDesTraj = squeeze(out.configDes.Data);
 desPosTraj = FwdKin(qDesTraj);
-save('./vars/desPosTraj_pasada_ext_torq.mat','desPosTraj');
+save('./vars/desPosTraj_hifc.mat','desPosTraj');
 
 qReal = out.configReal.Data';
 trajReal = FwdKin(qReal);
-save('./vars/trajReal_pasada_ext_torq.mat','trajReal');
+save('./vars/trajReal_hifc.mat','trajReal');
+
+fReal = out.forceReal.Data';
+forceReal = FwdKin(fReal);
+save('./vars/forceReal_hifc.mat','forceReal');
 
 size(desPosTraj)
 size(trajReal)
+size(forceReal)
 % fwd kinematics
 function [X] = FwdKin(Q)
     s1 = sin(Q(1, :));

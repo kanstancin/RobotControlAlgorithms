@@ -1,0 +1,112 @@
+#--------------------------- Tool Specifications -------------------------
+#
+# Modify the following macros to reflect the tools you wish to use for
+# compiling and linking your code.
+#
+CC = /Applications/MATLAB_R2020b.app/bin/mex -R2018a
+LD = $(CC)
+ 
+MODEL  = Manipulator_PDControl_InteractionControlHybrImpControl_for
+TARGET = cgxe
+MODULE_SRCS 	= m_mrkgoZAWWYFs627wbafmvD.c
+MODEL_SRC	= Manipulator_PDControl_InteractionControlHybrImpControl_for_cgxe.c
+MODEL_REG    = Manipulator_PDControl_InteractionControlHybrImpControl_for_cgxe_registry.c
+MAKEFILE    = Manipulator_PDControl_InteractionControlHybrImpControl_for_cgxe.mku
+MATLAB_ROOT	= /Applications/MATLAB_R2020b.app
+BUILDARGS   = 
+#------------------------------ Include/Lib Path ------------------------------
+ 
+
+ 
+USER_INCLUDES = -I"/Users/Kons/Documents/Western University/Robot Control/Project/RobotControlAlgorithms/ConventionalControl" -I"/Users/Kons/Documents/Western University/Robot Control/Project/RobotControlAlgorithms/ConventionalControl/slprj/_cprj" 
+MLSL_INCLUDES     = \
+    -I"/Applications/MATLAB_R2020b.app/extern/include" \
+    -I"/Applications/MATLAB_R2020b.app/simulink/include" \
+    -I"/Applications/MATLAB_R2020b.app/rtw/c/src"
+
+THIRD_PARTY_INCLUDES = -I"/Users/Kons/Documents/Western University/Robot Control/Project/RobotControlAlgorithms/ConventionalControl/slprj/_cgxe/Manipulator_PDControl_InteractionControlHybrImpControl_for/src" -I"/Applications/MATLAB_R2020b.app/extern/include/shared_robotics" -I"/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src" -I"/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd" 
+
+INCLUDE_PATH = $(MLSL_INCLUDES) $(USER_INCLUDES) $(THIRD_PARTY_INCLUDES)
+ 
+#----------------- Compiler and Linker Options --------------------------------
+ 
+
+CC_OPTS =  -w   -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -Dccd_EXPORTS
+CPP_REQ_DEFINES = -DMATLAB_MEX_FILE
+ 
+# Uncomment this line to move warning level to W4
+# cflags = $(cflags:W3=W4)
+CFLAGS = $(CPP_REQ_DEFINES) $(INCLUDE_PATH) CFLAGS="\$$CFLAGS $(CC_OPTS)"
+ 
+LDFLAGS = -Wl,-rpath,@loader_path  
+ 
+AUXLDFLAGS = 
+#----------------------------- Source Files -----------------------------------
+ 
+USER_OBJS =
+
+AUX_SRCS = ccd_ccd.c ccd_mpr.c ccd_polytope.c ccd_vec3.c collisioncodegen_CollisionGeometry.cpp collisioncodegen_api.cpp collisioncodegen_ccdExtensions.cpp collisioncodegen_checkCollision.cpp  
+
+REQ_SRCS  = $(MODEL_SRC) $(MODEL_REG) $(MODULE_SRCS) $(AUX_SRCS) 
+
+REQ_OBJS = $(REQ_SRCS:.cpp=.o)
+REQ_OBJS2 = $(REQ_OBJS:.c=.o)
+OBJS = $(REQ_OBJS2) $(USER_OBJS) $(AUX_ABS_OBJS)
+OBJLIST_FILE = Manipulator_PDControl_InteractionControlHybrImpControl_for_cgxe.mol
+TMWLIB = -L/Applications/MATLAB_R2020b.app/bin/maci64 -lfixedpoint -L/Applications/MATLAB_R2020b.app/bin/maci64 -lut -L/Applications/MATLAB_R2020b.app/bin/maci64 -lemlrt -L/Applications/MATLAB_R2020b.app/bin/maci64 -lmwslexec_simbridge -L/Applications/MATLAB_R2020b.app/bin/maci64 -lmwcgxert -L/Applications/MATLAB_R2020b.app/bin/maci64 -lmwmathutil -L/Applications/MATLAB_R2020b.app/bin/maci64 -lmwslccrt -L/Applications/MATLAB_R2020b.app/bin/maci64 -lmwipp -L/Applications/MATLAB_R2020b.app/bin/maci64 -lcovrt -L/Applications/MATLAB_R2020b.app/bin/maci64 -lmwsl_sfcn_cov_bridge 
+PARLIB = 
+  MAPCSF = /Applications/MATLAB_R2020b.app/tools/maci64/mapcsf
+   # RUN_MAPCSF_ON_UNIX is defined only if MAPCSF exists on this platform.
+   ifneq ($(wildcard $(MAPCSF)),) # run MAPCSF if it exists on this platform
+      RUN_MAPCSF_ON_UNIX =  /Applications/MATLAB_R2020b.app/tools/maci64/mapcsf $@
+   endif
+ 
+THIRD_PARTY_LIBS = 
+
+#--------------------------------- Rules --------------------------------------
+ 
+MEX_FILE_NAME = $(MODEL)_$(TARGET).mexmaci64
+ 
+$(MEX_FILE_NAME): $(MAKEFILE) $(OBJS) $(MEXLIB)
+	@echo ### Linking ...
+	$(CC) -silent LDFLAGS="\$$LDFLAGS $(LDFLAGS) $(AUXLDFLAGS)" -output $(MEX_FILE_NAME) @$(OBJLIST_FILE) $(OBJS) $(TMWLIB) $(PARLIB) $(THIRD_PARTY_LIBS) 
+	$(RUN_MAPCSF_ON_UNIX)
+
+%.o :	%.c
+	$(CC) -c $(CFLAGS) $<
+
+%.o :	%.cpp
+	$(CC) -c $(CFLAGS) $<
+
+ccd_ccd.o :	/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd_ccd.c
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd_ccd.c
+ccd_mpr.o :	/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd_mpr.c
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd_mpr.c
+ccd_polytope.o :	/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd_polytope.c
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd_polytope.c
+ccd_vec3.o :	/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd_vec3.c
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/ccd_vec3.c
+collisioncodegen_CollisionGeometry.o :	/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/collisioncodegen_CollisionGeometry.cpp
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/collisioncodegen_CollisionGeometry.cpp
+collisioncodegen_api.o :	/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/collisioncodegen_api.cpp
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/collisioncodegen_api.cpp
+collisioncodegen_ccdExtensions.o :	/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/collisioncodegen_ccdExtensions.cpp
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/collisioncodegen_ccdExtensions.cpp
+collisioncodegen_checkCollision.o :	/Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/collisioncodegen_checkCollision.cpp
+	$(CC) -c $(CFLAGS) /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/collisioncodegen_checkCollision.cpp
+%.o : /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/%.c
+	$(CC) -c $(CFLAGS) $<
+%.o : /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/%.c
+	$(CC) -c $(CFLAGS) $<
+%.o : /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/%.c
+	$(CC) -c $(CFLAGS) $<
+%.o : /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/externalDependency/libccd/src/%.c
+	$(CC) -c $(CFLAGS) $<
+%.o : /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/%.c
+	$(CC) -c $(CFLAGS) $<
+%.o : /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/%.c
+	$(CC) -c $(CFLAGS) $<
+%.o : /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/%.c
+	$(CC) -c $(CFLAGS) $<
+%.o : /Applications/MATLAB_R2020b.app/toolbox/shared/robotics/robotcore/builtins/libsrc/collisioncodegen/%.c
+	$(CC) -c $(CFLAGS) $<
