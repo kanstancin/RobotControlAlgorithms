@@ -114,7 +114,7 @@ legend('Task Space Trajectory','Waypoints');
 grid on
 view([45 45]);
 
-vizStep = 1;
+vizStep = 100;
 robot.DataFormat = 'column';
 qTask = out.configReal.Data';
 
