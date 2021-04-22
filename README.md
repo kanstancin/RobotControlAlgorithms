@@ -28,7 +28,7 @@ Reinforcement Learning control example:
 
 
 
-![Reinforcement Learning control](reinforcement_learning_control.gif) 
+![Reinforcement Learning control](RL_control.gif) 
 
 
 
