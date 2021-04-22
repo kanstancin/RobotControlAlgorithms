@@ -37,6 +37,7 @@ The following control algorithms are implemented in this project:
 Regulation problem:  
 - [x] PD control
 - [x] PD control with gravity compensation  
+- [x] **Reinforcement Learning**
 
 Tracking problem:  
 - [x] inverse dynamics control
